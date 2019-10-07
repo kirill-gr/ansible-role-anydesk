@@ -1,0 +1,5 @@
+= Install AnyDesk Ansible role
+
+Designed for Ubuntu, tested on 18.04 and 19.04
+
+After installation: `echo some_password | sudo anydesk --set-password`

@@ -1,0 +1,7 @@
+---
+
+- name: Install AnyDesk
+  include: anydesk.yml
+  tags:
+    - anydesk
+    - remote-access

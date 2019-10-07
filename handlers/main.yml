@@ -1,0 +1,5 @@
+---
+
+- name: Restart Anydesk service
+  command: anydesk --restart-service
+  become: yes

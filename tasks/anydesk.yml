@@ -1,0 +1,42 @@
+---
+
+- name: Add AnyDesk public key
+  apt_key:
+    url: https://keys.anydesk.com/repos/DEB-GPG-KEY
+    state: present
+  become: yes
+  register: anydesk_repo_key
+- name: Add AnyDesk repository
+  apt_repository:
+    repo: "deb http://deb.anydesk.com/ all main"
+  become: yes
+  register: anydesk_repo
+- name: Update repositories
+  apt:
+    update_cache: yes
+  become: yes
+  when: anydesk_repo.changed or anydesk_repo_key.changed
+- name: Install AnyDesk
+  apt:
+    name: anydesk
+    state: present
+  become: yes
+  notify:
+    - Restart Anydesk service
+- name: Allow unattended access
+  lineinfile:
+    path: /etc/anydesk/system.conf
+    regexp: '^ad.security.interactive_access='
+    line: ad.security.interactive_access=0
+  become: yes
+  notify:
+    - Restart Anydesk service
+- name: Set custom port
+  lineinfile:
+    path: /etc/anydesk/system.conf
+    regexp: '^ad.anynet.listen_port='
+    line: ad.anynet.listen_port={{ anydesk_port }}
+  when: anydesk_port is defined
+  become: yes
+  notify:
+    - Restart Anydesk service
