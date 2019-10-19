@@ -2,4 +2,7 @@
 
 Designed for Ubuntu, tested on 18.04 and 19.04
 
-After installation: `echo some_password | sudo anydesk --set-password`
+Variables:
+`anydesk_port` - override default Anydesk port
+
+After installation: `echo <some_password> | sudo anydesk --set-password` and `anydesk --get-id`
