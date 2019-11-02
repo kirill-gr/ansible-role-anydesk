@@ -1,7 +1,4 @@
 ---
 
 - name: Install AnyDesk
-  include: anydesk.yml
-  tags:
-    - anydesk
-    - remote-access
+  import_tasks: anydesk.yml
