@@ -2,7 +2,8 @@
 
 Designed for Ubuntu, tested on all versions from 18.04 to 19.10
 
-Variables:
+== Variables
 `anydesk_port` - override default Anydesk port
 
-After installation: `echo <some_password> | sudo anydesk --set-password` and `anydesk --get-id`
+== After installation
+`echo <some_password> | sudo anydesk --set-password` and `anydesk --get-id`
