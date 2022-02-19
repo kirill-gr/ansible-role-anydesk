@@ -1,6 +1,8 @@
 = Ansible role: Install AnyDesk
 
-Designed for Ubuntu, tested on all versions from 18.04 to 19.10
+Designed for:
+
+- Ubuntu 20.04
 
 == Variables
 `anydesk_port` - override default Anydesk port

@@ -5,17 +5,10 @@
     url: https://keys.anydesk.com/repos/DEB-GPG-KEY
     state: present
   become: yes
-  register: anydesk_repo_key
 - name: Add AnyDesk repository
   apt_repository:
     repo: "deb http://deb.anydesk.com/ all main"
   become: yes
-  register: anydesk_repo
-- name: Update repositories
-  apt:
-    update_cache: yes
-  become: yes
-  when: anydesk_repo.changed or anydesk_repo_key.changed
 - name: Install AnyDesk
   apt:
     name: anydesk
